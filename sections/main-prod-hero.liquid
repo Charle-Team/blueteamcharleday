@@ -1,0 +1,313 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+
+{% assign ss = section.settings %}
+{% assign usp_blocks = section.blocks | where: 'type', 'usp' -%}
+{% assign theProd = section.settings.product %}
+
+<div class="contentWrapper">
+
+    <!-- USPS -->
+    <div class="main_usps">
+
+        {% for block in usp_blocks %}
+        {% assign bs = block.settings %}
+        <div class="usp_container">
+        <img src="{{ bs.usp_image.src | img_url:"80x" }}" alt="{{ bs.usp_image.alt }}">
+        <p>{{ bs.usp_text }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- MAIN PROD SLIDE -->
+    <div class="main_prod">
+                  <div>
+                      <img src="{{ theProd.featured_image.src | img_url:"153x" }}" alt="{{ image.alt }}">
+                  </div>
+    </div>
+    <!-- CTA PROD TITLE BUY BUTTON -->
+    <div class="cta_prod">
+        <div class="cta_prod_images">
+        <img src="{{ section.settings.main_logo.src | img_url:'master' }}" alt="{{ section.settings.main_logo.alt }}">
+        <img src="{{ section.settings.right_image.src | img_url:'master' }}" alt="{{ section.settings.right_image.alt }}">
+        </div>
+        <div class="prod_container">
+        <h2>{{ theProd.title }}</h2>
+        <p class="prodDescription">{{ theProd.description }}</p>
+        <ul>
+            <li style="list-style:disc;">{{ ss.custom_text }}</li>
+        </ul>
+        <div class="flex">
+        <p class="prodPrice">{{ theProd.compare_at_price | money }}</p><p class="prodPrice_right">{{ ss.price_text }}</p>
+        </div>
+   
+        <div>
+            <form style="display:none" method="post" action="/cart/add">
+
+                <input type="hidden" name="id" value="{{ theProd.variants[0].id }}" />
+              
+                <input type="hidden" min="1" type="number" id="quantity" name="quantity" value="1"/>
+              
+                <input cl type="submit" value="Add to cart" class="btn submit_order" />
+              
+              </form>
+              <button class="age_verification">Buy Now</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="age_dialog">
+    <p>Are You Over 18?</p>
+    <div>
+    <button class="accept_order">Yes</button>
+    <button class="cancel_order">Unfortunately not</button>
+    </div>
+</div>
+
+
+<script>
+
+// open dialog
+document.querySelector('button.age_verification').addEventListener('click', () => {
+    document.querySelector('.age_dialog').classList.add('flex')
+})
+document.querySelector('button.accept_order').addEventListener('click', () => {
+    console.log('hi')
+document.querySelector('.submit_order').click();
+})
+document.querySelector('button.cancel_order').addEventListener('click', () => {
+    document.querySelector('.age_dialog').classList.remove('flex')
+})
+
+</script>
+
+
+<style>
+
+    .age_dialog {
+        position: fixed;
+        top: 50%;
+        flex-direction: column;
+        gap: 1rem;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: white;
+        height: 200px;
+        width: 500px;
+        justify-content: center;
+        align-items: center;
+        display: none;
+        box-shadow: 0px 0px 34px 16px rgba(0,0,0,0.1);
+    }
+    .age_dialog p {
+        font-size: 32px;
+    }
+    .age_dialog button {
+        font-size: 24px;
+        margin-bottom: 4rem;
+    }
+    .age_dialog button:nth-child(1) {
+        margin-right: 2rem;
+    }
+
+    .contentWrapper {
+        background-color: #C1B6A0;
+    }
+    .prodPrice,
+    .prodPrice_right {
+        font-size: 24px;
+    }
+    .prodDescription {
+        font-size: 19px;
+    }
+    .prodPrice::before {
+        content: url('https://cdn.shopify.com/s/files/1/0617/2059/2559/files/Line_1.png?v=1650637274');
+        left: -8px;
+        top: 7px;
+        width: 100%;
+        position: absolute;
+    }
+
+    .hidden {
+        display: none;
+    }
+    .flex {
+        display: flex !important;
+    }
+
+    .country_selector {
+    position: absolute;
+    top: 0;
+
+    }
+
+    .cta_prod_images {
+        display: flex;
+    }
+    .cta_prod_images img {
+        width: 50%;
+    }
+
+.contentWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3rem;
+    padding-bottom:3rem;
+}
+
+    .main_usps {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 300px;
+        width: 25%;
+    }
+    .usp_container img {
+
+    }
+    .usp_container {
+        display: flex;
+        flex-direction: column;
+        margin-top: .5rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main_prod {
+        padding-left:2rem;
+        padding-right: 2rem;
+    }
+
+    .main_prod .splide {
+     padding-left: 5rem;
+     padding-right: 5rem;
+    }
+
+    .cta_prod {
+        text-align: left;
+        width: 45%;
+    }
+    .cta_prod img {
+        border-bottom: 1px solid black;
+    }
+    .cta_prod p {
+        padding-right: 2.5rem;
+        position: relative;
+    }
+
+    .cta_prod button {
+        background:black;
+        color: white;
+        appearance: none;
+        padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    }
+
+
+    /* breakpoints */
+
+    @media screen and (max-width:1024px) {
+        .contentWrapper {
+            flex-direction: column;
+        }
+        .cta_prod img {
+            border-bottom: unset;
+        }
+        .main_prod {
+            order: 0;
+        }
+        .main_usps {
+            order:0;
+            flex-wrap:wrap
+        }
+        .main_prod {
+            display: block;
+            margin: auto;
+        }
+        .main_prod img {
+            width: 100%;
+        }
+        .cta_prod {
+            width: 100%;
+        }
+        .cta_prod img {
+            width: 50%;
+        }
+        .cta_prod_mobile {
+            display: block !important;
+        }
+        .main_usps {
+            max-width: unset;
+            width: 100%;
+            flex-direction: row;
+        }
+        .main_usps div {
+            padding-left:1.5rem;
+            padding-right: 1.5rem;
+        }
+        .prod_container {
+            padding:4rem;
+        }
+    }
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Main Prod Hero",
+  "settings": [    
+  {
+      "type":"product",
+      "label":"Choose Product",
+      "id":"product"
+  },
+  {
+      "type":"textarea",
+      "id":"custom_text",
+      "label":"Beneath Description Text"
+  },
+  {
+    "type":"text",
+    "id":"price_text",
+    "label":"Price Custom Text",
+    "default":"Free till we run out!"
+},
+  {
+    "type":"image_picker",
+    "label":"Left Logo",
+    "id":"main_logo"
+},
+{
+    "type":"image_picker",
+    "label":"Right Image",
+    "id":"right_image"
+}
+  ],
+  "blocks":[
+  {
+      "type":"usp",
+      "name":"USP",
+      "settings":[
+      {
+          "type":"image_picker",
+          "label":"USP Image",
+          "id":"usp_image"
+      },
+      {
+          "type":"text",
+          "label":"Text",
+          "id":"usp_text"
+      }
+      ]
+  }
+  ],
+  "presets": [
+    {
+      "name": "Main Prod Hero"
+    }
+  ]
+}
+{% endschema %}
