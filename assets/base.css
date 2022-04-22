@@ -2209,6 +2209,10 @@ input[type='checkbox'] {
   align-items: center;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 @media screen and (min-width: 990px) {

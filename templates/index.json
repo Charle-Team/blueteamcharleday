@@ -49,6 +49,7 @@
     },
     "rich_text": {
       "type": "rich-text",
+      "disabled": true,
       "blocks": {
         "heading": {
           "type": "heading",
@@ -77,18 +78,26 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Featured products",
         "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 4,
+        "full_width": false,
         "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
         "color_scheme": "background-1",
         "image_ratio": "adapt",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 28,
@@ -97,6 +106,7 @@
     },
     "collage": {
       "type": "collage",
+      "disabled": true,
       "blocks": {
         "collection-0": {
           "type": "collection",
@@ -135,6 +145,7 @@
     },
     "video": {
       "type": "video",
+      "disabled": true,
       "settings": {
         "heading": "",
         "heading_size": "h1",
@@ -148,6 +159,7 @@
     },
     "multicolumn": {
       "type": "multicolumn",
+      "disabled": true,
       "blocks": {
         "column1": {
           "type": "column",
@@ -198,6 +210,95 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "1650623589298adbdc": {
+      "type": "image-with-text",
+      "disabled": true,
+      "blocks": {
+        "165062358986a79f25-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "165062358986a79f25-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "165062358986a79f25-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "165062358986a79f25-0",
+        "165062358986a79f25-1",
+        "165062358986a79f25-2"
+      ],
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1650623596db9d83bf": {
+      "type": "main-prod-hero",
+      "blocks": {
+        "b0739f2f-bb4b-47c9-85ad-a08060bcf41a": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify:\/\/shop_images\/plant-based_2_1.png",
+            "usp_text": "USP 1"
+          }
+        },
+        "7e338ad1-b480-49d9-9567-7b0f40945bc0": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify:\/\/shop_images\/plant-based_2_1.png",
+            "usp_text": "USP 2"
+          }
+        },
+        "956b26f1-2097-4625-806d-f88134108317": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify:\/\/shop_images\/plant-based_2_1.png",
+            "usp_text": "USP 3"
+          }
+        },
+        "46cfee8b-f29d-42a4-b802-5eec09403ad7": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify:\/\/shop_images\/plant-based_2_1.png",
+            "usp_text": "USP 4"
+          }
+        }
+      },
+      "block_order": [
+        "b0739f2f-bb4b-47c9-85ad-a08060bcf41a",
+        "7e338ad1-b480-49d9-9567-7b0f40945bc0",
+        "956b26f1-2097-4625-806d-f88134108317",
+        "46cfee8b-f29d-42a4-b802-5eec09403ad7"
+      ],
+      "settings": {
+        "product": "wine",
+        "custom_text": "Each bottle signed by John",
+        "main_logo": "shopify:\/\/shop_images\/Group_1251.png",
+        "right_image": "shopify:\/\/shop_images\/2526_1_1.png"
+      }
     }
   },
   "order": [
@@ -206,6 +307,8 @@
     "featured_collection",
     "collage",
     "video",
-    "multicolumn"
+    "multicolumn",
+    "1650623589298adbdc",
+    "1650623596db9d83bf"
   ]
 }
