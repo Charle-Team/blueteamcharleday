@@ -55,7 +55,7 @@
   <p style="margin-top:1rem"></p>
   <div class="bugFactBtns">
   <button class="bugFactRestart">Start Again!</button>
-  <button class="bugFactCta"><a href="">Learn More</a></button>
+  <button class="bugFactCta"><a class="bugFactsCtaLink" href="">Learn More</a></button>
 </div>
 </div>
 </div>
@@ -228,7 +228,7 @@ return {
       bugFactDisplay.children[2].textContent = response.data.fact;
     }
     if (response.data.link != '') {
-      bugFactDisplay.children[6].children[0].setAttribute('href', response.data.link)
+      document.querySelector('.bugFactsCtaLink').setAttribute('href', response.data.link)
     }
   }
   });
