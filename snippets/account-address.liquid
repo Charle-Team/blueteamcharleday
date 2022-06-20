@@ -1,0 +1,19 @@
+<div class="bg-white custom-border-account border-4 border-primary rounded-3xl  w-full mb-5 md:mb-10 px-5" id="addresses">
+    <div class="flex justify-between">
+      <h2 class="w-full block mt-5 font-black text-lg tracking-widest" style="font-family:'Vag';">My Addresses</h2>
+      <a class="font-bold text-sm text-custom-pink hover:text-custom-blue pl-3 mt-5" href="/account/addresses"  style="font-family: 'Vag';">Edit</a>
+    </div>
+  
+  
+    <h2 class="w-full block mt-10 font-black mb-6 text-base" style="font-family: 'Vag';">Contact Addresses</h2>
+  
+    {% if customer.addresses.size > 0 %}
+    {% for address in customer.addresses %}
+      <div class="mb-6">{{ address | format_address }}</div>
+    {% endfor %}
+    {% else %}
+    <p class="font-bold text-base uppercase mt-5 mb-6 "  style="font-family: 'Vag';">No addresses found.</p>
+    {% endif %}
+  
+  
+  </div>
