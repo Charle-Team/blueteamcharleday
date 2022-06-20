@@ -2930,3 +2930,7 @@ details-disclosure > details {
 .font-body-bold {
   font-weight: var(--font-body-weight-bold);
 }
+
+.border-black {
+  border: 1px solid #023020 !important;
+}
