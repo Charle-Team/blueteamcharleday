@@ -30,6 +30,9 @@
 }
 [x-cloak] { display: none !important; }
 
+.font-cheltenham-std {
+  font-family: "cheltenham-std";
+}
 
 :root,
 .color-background-1 {
