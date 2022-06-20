@@ -2977,3 +2977,7 @@ details-disclosure > details {
   border-bottom: none !important;
 }
 
+.custom-border-account {
+  border: 2px solid #023020 !important;
+  
+}
