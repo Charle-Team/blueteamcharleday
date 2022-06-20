@@ -2966,4 +2966,11 @@ details-disclosure > details {
   border: 2px solid #023020 !important;
 }
 
+.border-top-none  {
+  border-top: none !important;
+}
+
+.border-bottom-none {
+  border-bottom: none !important;
+}
 
