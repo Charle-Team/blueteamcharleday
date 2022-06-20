@@ -1,5 +1,36 @@
 /* Color custom properties */
 
+@font-face {
+  font-family: "cheltenham-std";
+  src: url({{ "CheltenhamStd-Light.woff" | asset_url }}) format("woff");
+}
+@font-face {
+  font-family: "sofia-pro-light";
+  src: url({{ "SofiaProLight.woff" | asset_url }}) format("woff");
+}
+@font-face {
+  font-family: "sofia-pro-medium";
+  src: url({{ "SofiaProMedium.woff" | asset_url }}) format("woff");
+}
+@font-face {
+  font-family: "sofia-pro-regular";
+  src: url({{ "SofiaProRegular.woff" | asset_url }}) format("woff");
+}
+@font-face {
+  font-family: "sofia-pro-bold";
+  src: url({{ "SofiaProBold.woff" | asset_url }}) format("woff");
+}
+@font-face {
+  font-family: "sofia-pro-semi-bold";
+  src: url({{ "SofiaProSemiBold.woff" | asset_url }}) format("woff");
+}
+@font-face {
+  font-family: "lindsey-pro";
+  src: url({{ "lindsey-pro.woff" | asset_url }}) format("woff");
+}
+[x-cloak] { display: none !important; }
+
+
 :root,
 .color-background-1 {
   --color-foreground: var(--color-base-text);
@@ -2934,3 +2965,5 @@ details-disclosure > details {
 .border-black {
   border: 1px solid #023020 !important;
 }
+
+
