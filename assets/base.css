@@ -31,7 +31,7 @@
 [x-cloak] { display: none !important; }
 
 .font-cheltenham-std {
-  font-family: "cheltenham-std";
+  font-family: "cheltenham-std" !important;
 }
 
 :root,
