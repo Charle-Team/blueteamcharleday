@@ -50,6 +50,15 @@
   font-family: "sofia-pro-bold" !important;
 }
 
+
+.font-sofia-pro-semi-bold {
+  font-family: "sofia-pro-semi-bold" !important;
+}
+
+.font-lindsey-pro {
+  font-family: "lindsey-pro" !important;
+}
+
 :root,
 .color-background-1 {
   --color-foreground: var(--color-base-text);
