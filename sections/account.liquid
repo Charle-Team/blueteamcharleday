@@ -36,11 +36,253 @@
             {% include 'account-subscribe' %}
             {% include 'account-orders' %}
             {% include 'account-rewards' %}
+            {% include 'account-bug-fact' %}
             </div>
         </div>
       </div>
     </div>
   </div>
+
+
+<!-- bug fact container -->
+
+<div class="bugFactContainer">
+<span class="bugFactToggleClose">X</span>
+<div class="bugFactDisplay">
+  <h2></h2>
+  <img>
+  <p></p>
+  <p style="margin-top:1rem"></p>
+  <div class="bugFactBtns">
+  <button class="bugFactRestart">Start Again!</button>
+  <button class="bugFactCta"><a href="">Learn More</a></button>
+</div>
+</div>
+</div>
+
+<!-- bug fact styling -->
+
+<style>
+  .bugFactBtns {
+    display: flex;
+    gap: 1rem;
+  }
+  .bugFactDisplay {
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    gap: 1rem;
+    margin: auto;
+    display:none;
+    max-width: 90%;
+    width: 100%;
+    z-index: 9999;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    left: 50%;
+    flex-direction: column;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .bugFactDisplay h2,
+  .bugFactDisplay p {
+    text-transform: uppercase;
+  }
+  .bugFactDisplay img {
+    max-width: 300px;
+    margin: auto;
+    width: 100%;
+    padding: 1rem;
+  }
+  .bugFactContainer {
+    position: fixed;
+    overflow: hidden;
+    border: 2px solid black;
+    padding: 1.5rem;
+    width: 80%;
+    background-color: white;
+    border-radius: 1rem;
+    height: 80%;
+    left: 50%;
+    top: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+  circle {
+    position: relative;
+  }
+  circle::after {
+    content:url('https://cdn.shopify.com/s/files/1/0621/1210/4634/files/spider.png?v=1655729508');
+    height: 30px;
+    width:30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .block-important {
+    display: block !important;
+  }
+  .flex-important {
+    display: flex !important;
+  }
+  .bugFactToggleClose {
+    font-size: 35px;
+    text-align: right;
+    position: absolute;
+    right: 20px;
+    display: none;
+  }
+  .bugFactRestart,
+   .bugFactCta {
+   padding: 1rem;
+   margin-top: 1.5rem;
+   border: 1px solid black;
+  }
+  .bugFactCta {
+    background-color: black;
+    color: white;
+  }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+
+  document.querySelector('.bugFactPopupToggle').addEventListener('click', () => {
+    document.querySelector('.bugFactContainer').classList.toggle('block-important')
+    document.querySelector('.bugFactToggleClose').classList.toggle('block-important')
+  })
+  document.querySelector('.bugFactToggleClose').addEventListener('click', () => {
+    document.querySelector('.bugFactContainer').classList.toggle('block-important');
+    document.querySelector('.bugFactToggleClose').classList.toggle('block-important')
+    document.querySelector('.bugFactDisplay').classList.remove('flex-important');
+  })
+  document.querySelector('.bugFactRestart').addEventListener('click', () => {
+    document.querySelector('.bugFactDisplay').classList.remove('flex-important');
+  })
+
+  let bugFactDisplay = document.querySelector('.bugFactDisplay');
+
+
+
+  var APP = function (window) {
+
+var width = window.innerWidth,
+    height = window.innerHeight,
+    circles = d3.range(50).map(function(value,index) { 
+                return {x: Math.random()*width, y:Math.random()*height, radius: Math.random()*19 + 1, distance:0}
+              }),
+    svg = d3.select('.bugFactContainer').append('svg:svg')
+          .attr('width', width)
+          .attr('height', height);
+
+return {
+  init: function() {
+    var  app = this,
+         color = d3.scale.category20();
+
+    svg.selectAll('circle')
+    .data(circles)
+    .enter()
+    .append('svg:circle')
+    .attr('r', function(d) { return d.radius; })
+    .attr('cx', function(d) { return app.setCircleX(d.x,d.radius);})
+    .attr('cy', function(d) { return app.setCircleY(d.y,d.radius);})
+    .style('fill', function(d, i) { return color(i); })
+    .style('background-image','url("https://cdn.shopify.com/s/files/1/0621/1210/4634/files/spider.png?v=1655729508")');
+
+    app.setUpListeners();
+  },
+
+  setUpListeners: function() {
+    var app = this;
+
+    // click on bug event
+    svg.on('click', () => {
+      console.log('clicked');
+      axios.get('https://agile-brushlands-02771.herokuapp.com/api/random')
+  .then((response) => {
+    document.querySelector('.bugFactDisplay').classList.add('flex-important');
+    console.log(response.data.bugName);
+    console.log(response.data.fact);
+    if (response.data.image == 'https://cdn.shopify.com/s/files/1/0568/6571/8314/files/white-fine-wine-2_1.png?v=1650639276') {
+
+    }
+    if (response.data.bugName == '' || response.data.image == 'https://cdn.shopify.com/s/files/1/0568/6571/8314/files/white-fine-wine-2_1.png?v=1650639276') {
+      bugFactDisplay.children[0].textContent = 'Oops, Unlucky!';
+      bugFactDisplay.children[1].setAttribute('src','https://image.shutterstock.com/image-vector/fly-line-icon-prohibition-red-260nw-552835456.jpg')
+      bugFactDisplay.children[2].textContent = '';
+      bugFactDisplay.children[3].textContent = ""
+    } else {
+    if (response.data.bugName != '') {
+      bugFactDisplay.children[0].textContent = response.data.bugName;
+    }
+    if (response.data.image != '') {
+      bugFactDisplay.children[1].setAttribute('src',response.data.image)
+      bugFactDisplay.children[3].textContent = "Congratulations on catching the bug! Here's 10% off your next order: CATCHTHEBUG10"
+    }
+    if (response.data.fact != '') {
+      bugFactDisplay.children[2].textContent = response.data.fact;
+    }
+    if (response.data.link != '') {
+      bugFactDisplay.children[6].children[0].setAttribute('href', response.data.link)
+    }
+  }
+  });
+    })
+
+    svg.on('mousemove',function(){
+      var mouse = d3.mouse(this),
+          x = mouse[0],
+          y = mouse[1];
+          circles = svg.selectAll("circle");
+
+      /*Проверка попадания координат курсора в "зону убегания" точки и
+      и задание новых координат*/
+      circles
+      .each(function(d){
+        d.distance = Math.sqrt(Math.pow(x - this.getAttribute('cx'),2) + Math.sqrt(Math.pow(y - this.getAttribute('cy'),2)));
+        if(d.distance < 10) {
+          if(x - d.x < 0) { d.x = app.setCircleX(d.x + 20,d.radius) } else {d.x = app.setCircleX(d.x - 20,d.radius)};
+          if(y - d.y < 0) { d.y = app.setCircleY(d.y + 20,d.radius) } else {d.y = app.setCircleY(d.y - 20,d.radius)};
+        }                    
+      });
+
+      /*Отрисовка новых координат точек*/
+      circles.transition()
+      .ease('linear')
+      .attr('cx', function(d){return d.x})
+      .attr('cy', function(d){return d.y}) 
+    })
+  },
+
+  setCircleX: function(x,radius) {
+    if(x < radius ) {
+      return radius;
+    } else if (x > (width -  radius)) {
+      return width - radius
+    };
+    return x;
+  },
+
+  setCircleY: function(y,radius) {
+    if(y < radius ) {
+      return radius;
+    } else if (y > (height -  radius)) {
+      return height -  radius;
+    }; 
+    return y;
+  }
+}
+}(window);
+
+APP.init();
+
+</script>
+
 
   <style>
     @media (min-width: 768px) {
@@ -50,6 +292,7 @@
       }
     }
   </style>
+
 {% schema %}
 {
   "name": "Account",
