@@ -34,6 +34,22 @@
   font-family: "cheltenham-std" !important;
 }
 
+.font-sofia-pro-light {
+  font-family: "sofia-pro-light" !important;
+}
+
+.font-sofia-pro-medium {
+  font-family: "sofia-pro-medium" !important;
+}
+
+.font-sofia-pro-regular {
+  font-family: "sofia-pro-regular" !important;
+}
+
+.font-sofia-pro-bold {
+  font-family: "sofia-pro-bold" !important;
+}
+
 :root,
 .color-background-1 {
   --color-foreground: var(--color-base-text);
@@ -2979,5 +2995,6 @@ details-disclosure > details {
 
 .custom-border-account {
   border: 2px solid #023020 !important;
-  
+ 
 }
+
