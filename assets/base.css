@@ -32,6 +32,7 @@
 
 .font-cheltenham-std {
   font-family: "cheltenham-std" !important;
+  font-size: 18px !important;
 }
 
 .font-sofia-pro-light {
@@ -2991,7 +2992,7 @@ details-disclosure > details {
 }
 
 .border-black {
-  border: 2px solid #023020 !important;
+  border: 2px solid #056744 !important;
 }
 
 .border-top-none  {
