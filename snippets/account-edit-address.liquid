@@ -11,7 +11,7 @@
           {%- form 'customer_address', address -%}
             <div class="field mb-3 flex flex-col-reverse sm:flex-row-reverse justify-center items-center max-w-lg xl:justify-end">
               <input class="sm:ml-3 py-2 pl-2 font-sofia-pro text-xs rounded-md border border-black w-full sm:w-1/2" type="text" id="AddressFirstName_{{ form.id }}" name="address[name]" value="{{ form.first_name }} {{ form.last_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}">
-              <label class="font-sofia-pro-regular mb-2 sm:mb-0 w-full sm:w-1/2 flex sm:justify-end text-left sm:text-right text-sm " for="AddressFirstName_{{ form.id }}">Address</label>
+              <label class="font-sofia-pro-regular mb-2 sm:mb-0 w-full sm:w-1/2 flex sm:justify-end text-left sm:text-right text-sm " for="AddressFirstName_{{ form.id }}">Name</label>
             </div>
             <div class="field mb-3 flex flex-col-reverse sm:flex-row-reverse justify-center items-center max-w-lg xl:justify-end">
                 <input class="sm:ml-3 py-2 pl-2 font-sofia-pro text-xs rounded-md border border-black w-full sm:w-1/2" type="tel" id="AddressPhone_{{ form.id }}"  name="address[phone]" value="{{ form.phone }}" autocomplete="tel">
