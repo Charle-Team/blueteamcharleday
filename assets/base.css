@@ -3008,6 +3008,6 @@ details-disclosure > details {
  
 }
 
-.links-below-first .li {
+.links-below-first li a {
   font-size: 16px;
 }
